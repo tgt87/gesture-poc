@@ -1,3 +1,10 @@
-<h1>
+<!-- <h1>
   {{title}}
 </h1>
+<img src="../assets/test.jpg"> -->
+<div>Pointer Event</div>
+<div id="test" style="width: 100px; height: 40px; background-color: lightblue;" 
+(pointerdown)="handleGestureStart($event)"
+(pointermove)="handleGestureMove($event)"
+(pointerup)="handleGestureEnd($event)"
+(pointercancel)="handleGestureEnd($event)">{{eventText}}</div>
