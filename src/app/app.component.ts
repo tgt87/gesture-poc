@@ -10,7 +10,13 @@ export class AppComponent implements OnInit {
  eventText: string;
  initialTouchPos: any;
  lastTouchPos: any;
- rafPending: boolean = false;
+//  rafPending: boolean = false;
+ startTime: number = 0; 
+ endTime: number = 0;
+ timeThreshold: number = 300;
+ distThreshold: number = 100;
+ diffInX: number = 0;
+ diffInY: number = 0;
   constructor(private renderer: Renderer2, private element: ElementRef){
 
   }
@@ -20,13 +26,15 @@ export class AppComponent implements OnInit {
   }
 
   handleGestureStart(event){
+    console.log('start');
+    
     console.log(event);
     event.preventDefault();
     if(event.touches && event.touches.length > 1) return;
      
     this.initialTouchPos = this.getGesturePoint(event);
     console.log(event.target);
-    
+    this.startTime = new Date().getTime();
     event.target.setPointerCapture(event.pointerId);
     this.eventText = "pointer down " + this.initialTouchPos.x.toString() + "," + this.initialTouchPos.y.toString();
     console.log(this.initialTouchPos);
@@ -34,18 +42,37 @@ export class AppComponent implements OnInit {
   }
 
   handleGestureMove(event){
-    console.log('here');
+    console.log('move');
     
     event.preventDefault();
     if(!this.initialTouchPos) return;
     this.lastTouchPos = this.getGesturePoint(event);
-    if(this.rafPending) return;
-    this.rafPending = true;
+    console.log(this.lastTouchPos);
+    this.endTime = new Date().getTime();
+    this.diffInX = this.lastTouchPos.x - this.initialTouchPos.x;
+    this.diffInY = this.lastTouchPos.y - this.initialTouchPos.y;
+    if(this.endTime - this.startTime <= this.timeThreshold){
+      if(this.diffInX > 0 && this.diffInX >= this.distThreshold){
+        this.eventText = 'swipe right';
+      } else if(this.diffInX < 0 && Math.abs(this.diffInX) >= this.distThreshold){
+        this.eventText = 'swipe left';        
+      } else if(this.diffInY > 0 && this.diffInY >= this.distThreshold){
+        this.eventText = 'swipe down';
+      } else if(this.diffInY < 0 && Math.abs(this.diffInY) >= this.distThreshold){
+        this.eventText = 'swipe up';
+      }
+    }
+    // if(this.rafPending) return;
+    // this.rafPending = true;
+    
+    
     // window.requestAnimationFrame
   }
 
   handleGestureEnd(event){
-
+    console.log('end');
+    
+    event.target.releasePointerCapture(event.pointerId);
   }
 
   getGesturePoint(event){
