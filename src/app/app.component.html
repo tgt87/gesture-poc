@@ -2,9 +2,23 @@
   {{title}}
 </h1>
 <img src="../assets/test.jpg"> -->
-<div>Pointer Event</div>
-<div id="test" style="width: 300px; height: 300px; background-color: lightblue;" 
-(pointerdown)="handleGestureStart($event)"
-(pointermove)="handleGestureMove($event)"
-(pointerup)="handleGestureEnd($event)"
-(pointercancel)="handleGestureEnd($event)">{{eventText}}</div>
+<div>Using Pointer Event</div>
+<br>
+<div>Test swipe action</div>
+<div style="width: 200px; height: 200px; background-color: lightblue; text-align: center; vertical-align: middle; line-height:200px;" 
+    (pointerdown)="handleGestureStart($event)"
+    (pointermove)="handleGestureMove($event)"
+    (pointerup)="handleGestureEnd($event)"
+    (pointercancel)="handleGestureEnd($event)">{{displayText}}
+</div>
+<br>
+<div>There are a total of 3 images.</div>
+<div>Swipe left and right to change image</div>
+<div>
+  <img [src]="imgToShow" 
+      (pointerdown)="handleGestureStart($event)"
+      (pointermove)="handleGestureMove($event)"
+      (pointerup)="handleSwipeEnd($event)"
+      (pointercancel)="handleSwipeEnd($event)" width="200px" height="200px" style="border: 1px solid black;">
+  <div>{{imgNo}}</div>
+</div>
