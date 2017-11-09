@@ -31,7 +31,8 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     // let test = this.element.nativeElement.querySelector("#test");
     // this.renderer.listen(test, 'pointerdown', this.handleGestureStart)
-    this.imgToShow = `../assets/${this.imgSrc[0]}.jpg`;
+    //this.imgToShow = `../assets/${this.imgSrc[0]}.jpg`;
+    this.imgToShow = this.imgSrc[0];
   }
 
   handleGestureStart(event){
