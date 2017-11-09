@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
  startTime: number = 0; 
  endTime: number = 0;
  timeThreshold: number = 300;
- distThreshold: number = 100;
+ distThreshold: number = 15;
  diffInX: number = 0;
  diffInY: number = 0;
  //imgSrc = ["cat", "owl", "test"];
@@ -57,7 +57,7 @@ export class AppComponent implements OnInit {
     event.preventDefault();
     if(!this.initialTouchPos) return;
     this.lastTouchPos = this.getGesturePoint(event);
-   // console.log(this.lastTouchPos);
+   console.log(this.lastTouchPos);
     this.endTime = new Date().getTime();
     this.diffInX = this.lastTouchPos.x - this.initialTouchPos.x;
     this.diffInY = this.lastTouchPos.y - this.initialTouchPos.y;
