@@ -18,7 +18,10 @@ export class AppComponent implements OnInit {
  distThreshold: number = 100;
  diffInX: number = 0;
  diffInY: number = 0;
- imgSrc = ["cat", "owl", "test"];
+ //imgSrc = ["cat", "owl", "test"];
+ imgSrc = ["https://pbs.twimg.com/profile_images/737359467742912512/t_pzvyZZ_400x400.jpg", 
+            "https://pbs.twimg.com/profile_images/724794677522616324/B1CH7eCf.jpg", 
+            "http://barkpost-assets.s3.amazonaws.com/wp-content/uploads/2013/11/grumpy-dog-11.jpg"]
  imgIndex = 0;
  imgToShow: string;
  imgNo: string = "Image " + (this.imgIndex + 1).toString();
@@ -86,7 +89,8 @@ export class AppComponent implements OnInit {
       console.log('right');
       if(this.imgIndex - 1 >= 0){
         this.imgIndex -= 1;
-        this.imgToShow = `../assets/${this.imgSrc[this.imgIndex]}.jpg`;
+        //this.imgToShow = `../assets/${this.imgSrc[this.imgIndex]}.jpg`;
+        this.imgToShow = this.imgSrc[this.imgIndex];
         this.imgNo = "Image " + (this.imgIndex + 1).toString();
       }
          
@@ -94,7 +98,8 @@ export class AppComponent implements OnInit {
       console.log('left');
       if(this.imgIndex + 1 <= this.imgSrc.length - 1){
         this.imgIndex += 1;
-        this.imgToShow = `../assets/${this.imgSrc[this.imgIndex]}.jpg`;
+        //this.imgToShow = `../assets/${this.imgSrc[this.imgIndex]}.jpg`;
+        this.imgToShow = this.imgSrc[this.imgIndex];
         this.imgNo = "Image " + (this.imgIndex + 1).toString();
       } 
     }
