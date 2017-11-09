@@ -22,3 +22,9 @@
       (pointercancel)="handleSwipeEnd($event)" width="200px" height="200px" style="border: 1px solid black; touch-action: pinch-zoom;">
   <div>{{imgNo}}</div>
 </div>
+<br>
+<div>Using Hammerjs</div>
+<div>
+  <img [src]="imgToShow2" (swipeleft)="swipe($event.type)" (swiperight)="swipe($event.type)" width="200px" height="200px" style="border: 1px solid black; touch-action: pinch-zoom;">
+  <div>{{imgNo2}}</div>
+</div>

@@ -21,10 +21,15 @@ export class AppComponent implements OnInit {
  //imgSrc = ["cat", "owl", "test"];
  imgSrc = ["https://pbs.twimg.com/profile_images/737359467742912512/t_pzvyZZ_400x400.jpg", 
             "https://pbs.twimg.com/profile_images/724794677522616324/B1CH7eCf.jpg", 
-            "http://barkpost-assets.s3.amazonaws.com/wp-content/uploads/2013/11/grumpy-dog-11.jpg"]
+            "http://barkpost-assets.s3.amazonaws.com/wp-content/uploads/2013/11/grumpy-dog-11.jpg"];
  imgIndex = 0;
  imgToShow: string;
  imgNo: string = "Image " + (this.imgIndex + 1).toString();
+
+ imgIndex2 = 0;
+ imgToShow2: string;
+ imgNo2: string = "Image " + (this.imgIndex + 1).toString();
+
   constructor(){
 
   }
@@ -33,6 +38,7 @@ export class AppComponent implements OnInit {
     // this.renderer.listen(test, 'pointerdown', this.handleGestureStart)
     //this.imgToShow = `../assets/${this.imgSrc[0]}.jpg`;
     this.imgToShow = this.imgSrc[0];
+    this.imgToShow2 = this.imgSrc[0];
   }
 
   handleGestureStart(event){
@@ -112,5 +118,18 @@ export class AppComponent implements OnInit {
     point.x = event.clientX;
     point.y = event.clientY;
     return point;
+  }
+
+  swipe(action){
+    console.log(action);
+    if(action === 'swipeleft' && this.imgIndex2 + 1 <= this.imgSrc.length - 1){
+      this.imgIndex2 += 1;
+      this.imgToShow2 = this.imgSrc[this.imgIndex2];
+      this.imgNo2 = "Image " + (this.imgIndex2 + 1).toString();
+    } else if(action === 'swiperight' && this.imgIndex2 - 1 >= 0){
+      this.imgIndex2 -= 1;
+      this.imgToShow2 = this.imgSrc[this.imgIndex2];
+      this.imgNo2 = "Image " + (this.imgIndex2 + 1).toString();
+    }
   }
 }
