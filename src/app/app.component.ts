@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
  startTime: number = 0; 
  endTime: number = 0;
  timeThreshold: number = 300;
- distThreshold: number = 15;
+ distThreshold: number = 50;
  diffInX: number = 0;
  diffInY: number = 0;
  //imgSrc = ["cat", "owl", "test"];
