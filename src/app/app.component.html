@@ -19,12 +19,17 @@
       (pointerdown)="handleGestureStart($event)"
       (pointermove)="handleGestureMove($event)"
       (pointerup)="handleSwipeEnd($event)"
-      (pointercancel)="handleSwipeEnd($event)" width="200px" height="200px" style="border: 1px solid black; touch-action: pinch-zoom;">
+      (pointercancel)="handleSwipeEnd($event)" (click)="display('Clicked!')" width="200px" height="200px" style="border: 1px solid black; touch-action: pinch-zoom;">
   <div>{{imgNo}}</div>
 </div>
 <br>
 <div>Using Hammerjs</div>
 <div>
-  <img [src]="imgToShow2" (swipeleft)="swipe($event.type)" (swiperight)="swipe($event.type)" width="200px" height="200px" style="border: 1px solid black; touch-action: pinch-zoom;">
+  <img [src]="imgToShow2" (swipeleft)="swipe($event.type)" (swiperight)="swipe($event.type)" (tap)="display('Tapped!')" width="200px" height="200px" style="border: 1px solid black; touch-action: pinch-zoom;">
   <div>{{imgNo2}}</div>
 </div>
+
+<br>
+<button (click)="display('Clicked!')">Click</button>
+<br>
+<button (tap)="display('Tapped!')">Tap</button>

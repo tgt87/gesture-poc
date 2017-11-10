@@ -132,4 +132,8 @@ export class AppComponent implements OnInit {
       this.imgNo2 = "Image " + (this.imgIndex2 + 1).toString();
     }
   }
+
+  display(msg){
+    alert(msg);
+  }
 }
